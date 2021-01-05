@@ -1,9 +1,13 @@
+recipeUrl = "http://localhost:3000/recipes"
+commentUrl = "http://localhost:3000/comments"
+
+
 document.addEventListener("DOMContentLoaded", function(){
-    fetchBallers()
+    fetchRecipes()
   })
   
-  function fetchBallers (){
-    fetch('http://localhost:3000/recipes')
+  function fetchRecipes (){
+    fetch(recipeUrl)
     .then(response => response.json())
     .then(recipecs => {
       recipecs.forEach((recipe) => showRecipe(recipe))
@@ -38,6 +42,26 @@ document.addEventListener("DOMContentLoaded", function(){
         vegetarian.innerText = "Vegetarian: True"
         outerDiv.append(vegetarian)
     }
+
+    recipeId = recipe.id
+    fetchComments(outerDiv, recipeId)
+
     const container = document.querySelector('body')
     container.append(outerDiv)
+  }
+
+  function fetchComments(outerDiv, recipeId) {
+      fetch(commentUrl)
+      .then(response => response.json())
+      .then(comments => {
+          comments.forEach((comment) => showComment(comment, outerDiv, recipeId))
+      })
+  }
+
+  function showComment(comment, outerDiv, recipeId) {
+    const commentH5 = document.createElement('h5')
+    if(comment.recipe_id === recipeId){
+        commentH5.textContent = comment.content
+    }
+    outerDiv.append(commentH5) 
   }
