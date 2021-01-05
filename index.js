@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(){
-    fetchBallers()
+    fetchRecipes()
   })
   
-  function fetchBallers (){
+  function fetchRecipes (){
     fetch('http://localhost:3000/recipes')
     .then(response => response.json())
     .then(recipes => {
@@ -16,8 +16,7 @@ document.addEventListener("DOMContentLoaded", function(){
     outerDiv.setAttribute('id', recipe.id)
     const img = document.createElement('img')
     img.setAttribute("src", recipe.image)
-    const innerDiv = document.createElement('div')
-    innerDiv.setAttribute("class", "container")
+    
     const recipeName = document.createElement('h3')
     recipeName.innerText = recipe.title
     const ingredientsList = document.createElement('h4')
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function(){
     content.innerText = recipe.content
 
   
-    outerDiv.append(img, innerDiv, recipeName, ingredientsList, content)
+    outerDiv.append(img, recipeName, ingredientsList, content)
     if (recipe.vegan === true){
         const vegan = document.createElement('h4')
         vegan.innerText = "Vegan: True"
@@ -38,6 +37,8 @@ document.addEventListener("DOMContentLoaded", function(){
         vegetarian.innerText = "Vegetarian: True"
         outerDiv.append(vegetarian)
     }
-    const container = document.querySelector('body')
-    container.append(outerDiv)
+    const body = document.querySelector('body')
+    
+    const section = document.querySelector('section')
+    section.append(outerDiv)
   }
