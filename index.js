@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function(){
   function fetchBallers (){
     fetch('http://localhost:3000/recipes')
     .then(response => response.json())
-    .then(recipecs => {
-      recipecs.forEach((recipe) => showRecipe(recipe))
+    .then(recipes => {
+      recipes.forEach((recipe) => showRecipe(recipe))
     })
   }
 

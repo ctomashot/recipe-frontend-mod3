@@ -1,3 +1,7 @@
 
 
-
+  .background {
+    background-image: url("../images/TableFoodImage4.jpg");
+    border: 15px solid white;
+    border-bottom: 60px solid white;
+  }
