@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", function(){
     outerDiv.append(img, innerDiv, recipeName, ingredientsList, content)
     if (recipe.vegan === true){
         const vegan = document.createElement('h4')
-        vegan.innerText = "Vegan: True"
+        vegan.innerText = "Vegan"
         outerDiv.append(vegan)
     }
 
     if (recipe.vegetarian === true){
         const vegetarian = document.createElement('h4')
-        vegetarian.innerText = "Vegetarian: True"
+        vegetarian.innerText = "Vegetarian"
         outerDiv.append(vegetarian)
     }
 
@@ -62,6 +62,22 @@ document.addEventListener("DOMContentLoaded", function(){
     const commentH5 = document.createElement('h5')
     if(comment.recipe_id === recipeId){
         commentH5.textContent = comment.content
+        commentH5.dataset.id = comment.id
+        const deleteComment = document.createElement('button')
+        deleteComment.textContent = 'Delete'
+        commentH5.append(deleteComment)
+        deleteComment.addEventListener('click', deleteTheComment)
     }
+
     outerDiv.append(commentH5) 
+  }
+
+  function deleteTheComment(event){
+    const commentId = event.target.parentElement.dataset.id
+    const parent = event.target.parentElement
+    console.log(commentId)
+    fetch(`${commentUrl}/${commentId}`,{
+        method: 'DELETE'
+    })     
+    parent.remove()
   }
