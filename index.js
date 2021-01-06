@@ -23,9 +23,20 @@ document.addEventListener("DOMContentLoaded", function(){
     ingredientsList.innerText = recipe.ingredients
     const content = document.createElement('h4')
     content.innerText = recipe.content
+    const container = document.createElement('div')
+    container.setAttribute("class", "container")
+    const frontDiv = document.createElement('div')
+    frontDiv.setAttribute("class", "front-card")
+    const backDiv = document.createElement('div')
+    backDiv.setAttribute("class", "back-card")
+
+
+    frontDiv.append(img, recipeName) // will need comments attached here
+
+    backDiv.append(ingredientsList, content)
 
   
-    outerDiv.append(img, recipeName, ingredientsList, content)
+    outerDiv.append(frontDiv, backDiv)
     if (recipe.vegan === true){
         const vegan = document.createElement('h4')
         vegan.innerText = "Vegan: True"
@@ -40,5 +51,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const body = document.querySelector('body')
     
     const section = document.querySelector('section')
-    section.append(outerDiv)
+    container.append(outerDiv)
+    section.append(container)
+
   }
