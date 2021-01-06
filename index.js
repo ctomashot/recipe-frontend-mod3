@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function(){
       recipes.forEach((recipe) => showRecipe(recipe))
     })
   }
+  const container = document.createElement('div')
+    container.setAttribute("class", "container")
 
   function showRecipe(recipe){
     const outerDiv = document.createElement('div')
@@ -23,8 +25,7 @@ document.addEventListener("DOMContentLoaded", function(){
     ingredientsList.innerText = recipe.ingredients
     const content = document.createElement('h4')
     content.innerText = recipe.content
-    const container = document.createElement('div')
-    container.setAttribute("class", "container")
+    
     const frontDiv = document.createElement('div')
     frontDiv.setAttribute("class", "front-card")
     const backDiv = document.createElement('div')
@@ -50,8 +51,11 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     const body = document.querySelector('body')
     
-    const section = document.querySelector('section')
+    // const section = document.querySelector('section')
     container.append(outerDiv)
-    section.append(container)
+    //section.append(container)
+
+    const columnCard = document.querySelector(".column-card")
+    columnCard.append(container)
 
   }
