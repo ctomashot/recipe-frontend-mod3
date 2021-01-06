@@ -30,12 +30,26 @@ document.addEventListener("DOMContentLoaded", function(){
     const imageInput = document.createElement('input')
     imageInput.setAttribute('type', 'text')
     imageInput.setAttribute('placeholder', 'New Recipe Image URL...')
-    const veganInput = document.createElement('input')
-    veganInput.setAttribute('type', 'text')
-    veganInput.setAttribute('placeholder', 'Vegan true or false?')
-    const veggieInput = document.createElement('input')
-    veggieInput.setAttribute('type', 'text')
-    veggieInput.setAttribute('placeholder', 'Vegetarian true or false?')
+    const veganInput = document.createElement('select')
+    const veganTrue = document.createElement('option')
+    const veganFalse = document.createElement('option')
+    veganTrue.setAttribute("value", "true")
+    veganFalse.setAttribute("value", "false")
+    veganText1 = document.createTextNode('Vegan: True')
+    veganText2 = document.createTextNode('Vegan: False')
+    veganTrue.append(veganText1)
+    veganFalse.append(veganText2)
+    veganInput.append(veganTrue, veganFalse)
+    const veggieInput = document.createElement('select')
+    const veggieTrue = document.createElement('option')
+    const veggieFalse = document.createElement('option')
+    veggieTrue.setAttribute("value", "true")
+    veggieFalse.setAttribute("value", "false")
+    veggieText1 = document.createTextNode('Vegetarian: True')
+    veggieText2 = document.createTextNode('Vegetarian: False')
+    veggieTrue.append(veggieText1)
+    veggieFalse.append(veggieText2)
+    veggieInput.append(veggieTrue, veggieFalse)
     const submitButton = document.createElement('button')
     submitButton.setAttribute("type", "submit")
     submitButton.innerText = 'Post'
@@ -82,17 +96,14 @@ document.addEventListener("DOMContentLoaded", function(){
     outerDiv.setAttribute('id', recipe.id)
     const img = document.createElement('img')
     img.setAttribute("src", recipe.image)
-    const innerDiv = document.createElement('div')
-    innerDiv.setAttribute("class", "container")
     const recipeName = document.createElement('h3')
     recipeName.innerText = recipe.title
     const ingredientsList = document.createElement('h4')
     ingredientsList.innerText = recipe.ingredients
     const content = document.createElement('h4')
     content.innerText = recipe.content
-
   
-    outerDiv.append(img, innerDiv, recipeName, ingredientsList, content)
+    outerDiv.append(img, recipeName, ingredientsList, content)
     if (recipe.vegan === true){
         const vegan = document.createElement('h4')
         vegan.innerText = "Vegan"
@@ -105,6 +116,12 @@ document.addEventListener("DOMContentLoaded", function(){
         outerDiv.append(vegetarian)
     }
  
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = 'Delete'
+    deleteButton.dataset.id = recipe.id
+    deleteButton.addEventListener('click', deleteTheRecipe)
+    outerDiv.append(deleteButton)
+
     const form = document.createElement('form')
     const input = document.createElement('input')
     input.setAttribute('type', 'text')
@@ -120,6 +137,16 @@ document.addEventListener("DOMContentLoaded", function(){
  
     const body = document.querySelector('body')
     body.append(outerDiv)
+  }
+
+  function deleteTheRecipe(event){
+    const recipeId = event.target.parentElement.id
+    console.log(recipeId)
+    const parent = event.target.parentElement
+    fetch(`${recipeUrl}/${recipeId}`,{
+        method: 'DELETE'
+    })     
+    parent.remove()
   }
 
   function fetchComments(outerDiv, recipeId) {
