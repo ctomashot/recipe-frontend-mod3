@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function(){
   function fetchRecipes (){
     fetch(recipeUrl)
     .then(response => response.json())
-    .then(recipecs => {
-      recipecs.forEach((recipe) => showRecipe(recipe))
+    .then(recipes => {
+      recipes.forEach((recipe) => showRecipe(recipe))
     })
   }
 
@@ -20,8 +20,6 @@ document.addEventListener("DOMContentLoaded", function(){
     outerDiv.setAttribute('id', recipe.id)
     const img = document.createElement('img')
     img.setAttribute("src", recipe.image)
-    const innerDiv = document.createElement('div')
-    innerDiv.setAttribute("class", "container")
     const recipeName = document.createElement('h3')
     recipeName.innerText = recipe.title
     const ingredientsList = document.createElement('h4')
@@ -30,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(){
     content.innerText = recipe.content
 
   
-    outerDiv.append(img, innerDiv, recipeName, ingredientsList, content)
+    outerDiv.append(img, recipeName, ingredientsList, content)
     if (recipe.vegan === true){
         const vegan = document.createElement('h4')
         vegan.innerText = "Vegan"
@@ -46,8 +44,18 @@ document.addEventListener("DOMContentLoaded", function(){
     recipeId = recipe.id
     fetchComments(outerDiv, recipeId)
 
-    const container = document.querySelector('body')
-    container.append(outerDiv)
+    const form = document.createElement('form')
+    const input = document.createElement('input')
+    input.setAttribute('type', 'text')
+    input.setAttribute('placeholder', 'Add a comment...')
+    const submitButton = document.createElement('button')
+    submitButton.setAttribute("type", "submit")
+    submitButton.innerText = 'Post'
+    form.append(input, submitButton)
+    outerDiv.append(form)
+
+    const body = document.querySelector('body')
+    body.append(outerDiv)
   }
 
   function fetchComments(outerDiv, recipeId) {
@@ -68,8 +76,7 @@ document.addEventListener("DOMContentLoaded", function(){
         commentH5.append(deleteComment)
         deleteComment.addEventListener('click', deleteTheComment)
     }
-
-    outerDiv.append(commentH5) 
+    outerDiv.append(commentH5)
   }
 
   function deleteTheComment(event){
