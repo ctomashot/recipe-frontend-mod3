@@ -1,17 +1,52 @@
-//login JavaScript 
-const loginForm = document.getElementById("login-form");
-const loginButton = document.getElementById("login-form-submit");
-const loginErrorMsg = document.getElementById("login-error-msg");
+document.addEventListener("DOMContentLoaded", function () {
+	fetchBallers();
+});
+function fetchBallers() {
+	fetch("http://localhost:3000/recipes")
+		.then((response) => response.json())
+		.then((recipecs) => {
+			recipecs.forEach((recipe) => showRecipe(recipe));
+		});
+}
+function showRecipe(recipe) {
+	const outerDiv = document.createElement("div");
+	outerDiv.setAttribute("class", "card");
+	outerDiv.setAttribute("id", recipe.id);
+	const img = document.createElement("img");
+	img.setAttribute("src", recipe.image);
+	const innerDiv = document.createElement("div");
+	innerDiv.setAttribute("class", "container");
+	const recipeName = document.createElement("h3");
+	recipeName.innerText = recipe.title;
+	const ingredientsList = document.createElement("h4");
+	ingredientsList.innerText = recipe.ingredients;
+	const content = document.createElement("h4");
+	content.innerText = recipe.content;
+	outerDiv.append(img, innerDiv, recipeName, ingredientsList, content);
+	if (recipe.vegan === true) {
+		const vegan = document.createElement("h4");
+		vegan.innerText = "Vegan: True";
+		outerDiv.append(vegan);
+	}
+	if (recipe.vegetarian === true) {
+		const vegetarian = document.createElement("h4");
+		vegetarian.innerText = "Vegetarian: True";
+		outerDiv.append(vegetarian);
+	}
+	const container = document.querySelector("body");
+	container.append(outerDiv);
+}
 
-loginButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    const username = loginForm.username.value;
-    const password = loginForm.password.value;
+function loginWindow() {
+	const name = document.getElementById("name");
+	const username = document.getElementById("username");
 
-    if (username === "user" && password === "ballers") {
-        alert("You have successfully logged in.");
-        location.reload();
-    } else {
-        loginErrorMsg.style.opacity = 1;
-    }
-})
+	const nameLog = "Oscar";
+	const userLog = "oac89";
+
+	if (name.value == nameLog) {
+		if (username.value == userLog) {
+			window.alert("You are logged in as " + username.value);
+		}
+	}
+}
