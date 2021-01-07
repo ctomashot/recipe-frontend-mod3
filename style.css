@@ -43,4 +43,19 @@ flip card
   transform: rotateY(0deg);
 }
 
+.card {
+  height: 700px;
+}
 
+
+.photo {
+  position: center;
+}
+
+.card-title {
+  position: cover;
+}
+
+.container {
+  
+}
