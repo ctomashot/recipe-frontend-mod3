@@ -5,43 +5,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Recipe App</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
-    <script defer type="text/javascript" src="index.js"></script>
-</head>
-<body>
-
-	<div class="hero">
-		<div class="form-box">
-			<div class="button-box">
-				<div id="btn">
+	<script defer type="text/javascript" src="index.js"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+	  <div class="container">
+		  <div class="post">
+			  <div class="text">
+				  Rating Posted!
 				</div>
-				<button type="button" class="toggle-btn" onclick="login()">
-					Login
-				</button>
-				<button type="button" class="toggle-btn" onclick="register()">
-					Register
-				</button>
+				<div class="edit">
+					EDIT
+				</div>
 			</div>
-
-			<div class="social-icons">
-				<img src="images/facebook.png" alt="facebook">
-				<img src="images/twitter.webp" alt="twitter">
-				<img src="images/google.png" alt="google plus">
+			<div class="star-widget">
+				<input type="radio" name="rate" id="rate-5">
+				<label for="rate-5" class="fas fa-star"></label>
+        		<input type="radio" name="rate" id="rate-4">
+        		<label for="rate-4" class="fas fa-star"></label>
+				<input type="radio" name="rate" id="rate-3">
+				<label for="rate-3" class="fas fa-star"></label>
+				<input type="radio" name="rate" id="rate-2">
+				<label for="rate-2" class="fas fa-star"></label>
+				<input type="radio" name="rate" id="rate-1">
+				<label for="rate-1" class="fas fa-star"></label>
+				<form action="#">
+					<div class="btn">
+						<button type="submit">Post</button>
+					</div>
+				</form>
 			</div>
-
-			<form id="login" class="input-group">
-				<input type="text" class="input-field" placeholder="Name" required>
-				<input type="text" class="input-field" placeholder="Username" required>
-				<button type="submit" class="submit-btn">Login</button>
-			</form>
-
-			<form id="register" class="input-group">
-				<input type="text" class="input-field" placeholder="Name" required>
-				<input type="text" class="input-field" placeholder="Username" required>
-				<button type="submit" class="submit-btn">Register</button>
-			</form>
-
-		</div>
-	</div>
-
-</body>
+  </body>
 </html>
