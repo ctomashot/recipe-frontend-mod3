@@ -8,6 +8,40 @@
     <script defer type="text/javascript" src="index.js"></script>
 </head>
 <body>
-	
+
+	<div class="hero">
+		<div class="form-box">
+			<div class="button-box">
+				<div id="btn">
+				</div>
+				<button type="button" class="toggle-btn" onclick="login()">
+					Login
+				</button>
+				<button type="button" class="toggle-btn" onclick="register()">
+					Register
+				</button>
+			</div>
+
+			<div class="social-icons">
+				<img src="images/facebook.png" alt="facebook">
+				<img src="images/twitter.webp" alt="twitter">
+				<img src="images/google.png" alt="google plus">
+			</div>
+
+			<form id="login" class="input-group">
+				<input type="text" class="input-field" placeholder="Name" required>
+				<input type="text" class="input-field" placeholder="Username" required>
+				<button type="submit" class="submit-btn">Login</button>
+			</form>
+
+			<form id="register" class="input-group">
+				<input type="text" class="input-field" placeholder="Name" required>
+				<input type="text" class="input-field" placeholder="Username" required>
+				<button type="submit" class="submit-btn">Register</button>
+			</form>
+
+		</div>
+	</div>
+
 </body>
 </html>
