@@ -10,12 +10,14 @@ document.addEventListener("DOMContentLoaded", function(){
     })
   }
   const container = document.createElement('div')
-    container.setAttribute("class", "container")
+    container.setAttribute("class", "row")
 
   function showRecipe(recipe){
     const outerDiv = document.createElement('div')
-    outerDiv.setAttribute("class", "card")
+    outerDiv.setAttribute("class", "card col-3" )
     outerDiv.setAttribute('id', recipe.id)
+    // outerDiv.setAttribute('class', "col-3")
+    
     const img = document.createElement('img')
     img.setAttribute("src", recipe.image)
     
@@ -49,13 +51,28 @@ document.addEventListener("DOMContentLoaded", function(){
         vegetarian.innerText = "Vegetarian: True"
         outerDiv.append(vegetarian)
     }
-    const body = document.querySelector('body')
+    // const body = document.querySelector('body')
+
     
-    // const section = document.querySelector('section')
+  const row = document.querySelector('.container')
+    
     container.append(outerDiv)
-    //section.append(container)
+    row.append(container)
 
-    const columnCard = document.querySelector(".column-card")
-    columnCard.append(container)
 
+      // const row1 = document.querySelector('#row1')
+      // const row2 = document.querySelector('#row2')
+      // const row3 = document.querySelector('#row3')
+
+
+  
+    // console.log(row.childElementCount)
+
+    // if (row3.childElementCount < row2.childElementCount)
+    //     row3.append(outerDiv)
+    // // if (row2.childElementCount < row1.childElementCount)
+    //     row2.append(outerDiv)
+    // if (row1.childElementCount < row2.childElementCount)
+    //     row1.append(outerDiv)
+        
   }
