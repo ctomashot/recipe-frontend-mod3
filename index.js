@@ -80,6 +80,19 @@
 //     parent.remove()
 //   }
 
+document.addEventListener("DOMContentLoaded", function () {
+  fetchUser();
+});
+
+function fetchUser() {
+  fetch("http://localhost:3000/users")
+    .then((resp) => resp.json())
+    .then((users) => {
+      users.forEach(postUser);
+    });
+}
+
+
 let x = document.getElementById("login");
 let y = document.getElementById("register");
 let z = document.getElementById("btn");
