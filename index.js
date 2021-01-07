@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function(){
   function showComment(comment, outerDiv, recipeId) {
     const commentH5 = document.createElement('h5')
     if(comment.recipe_id === recipeId){
-        commentH5.textContent = `${comment.user.username}: ${comment.content}`
+        commentH5.textContent = comment.content
         commentH5.dataset.id = comment.id
         const deleteComment = document.createElement('button')
         deleteComment.textContent = 'Delete'
