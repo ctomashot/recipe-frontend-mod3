@@ -16,12 +16,14 @@ document.addEventListener("DOMContentLoaded", function(){
     const outerDiv = document.createElement('div')
     outerDiv.setAttribute("class", "card col-3" )
     outerDiv.setAttribute('id', recipe.id)
-    // outerDiv.setAttribute('class', "col-3")
+    
     
     const img = document.createElement('img')
     img.setAttribute("src", recipe.image)
+    img.setAttribute("class", "photo")
     
     const recipeName = document.createElement('h3')
+    recipeName.setAttribute("class", "card-title")
     recipeName.innerText = recipe.title
     const ingredientsList = document.createElement('h4')
     ingredientsList.innerText = recipe.ingredients
@@ -29,50 +31,52 @@ document.addEventListener("DOMContentLoaded", function(){
     content.innerText = recipe.content
     
     const frontDiv = document.createElement('div')
-    frontDiv.setAttribute("class", "front-card")
+    frontDiv.setAttribute("class", "card-front text-white bg-dark")
     const backDiv = document.createElement('div')
-    backDiv.setAttribute("class", "back-card")
+    backDiv.setAttribute("class", "card-back bg-white")
 
 
-    frontDiv.append(img, recipeName) // will need comments attached here
+
+    const cardFlip = document.createElement("div")
+    cardFlip.setAttribute("class", "card card-flip h-100")
+
+    //const cardBody = document.createElement("div")
+    //cardBody.setAttribute("class", "card-body")
+
+   
+
+    frontDiv.append(recipeName, img) // will need comments attached here
 
     backDiv.append(ingredientsList, content)
 
-  
-    outerDiv.append(frontDiv, backDiv)
+    cardFlip.append(frontDiv, backDiv)
     if (recipe.vegan === true){
         const vegan = document.createElement('h4')
         vegan.innerText = "Vegan: True"
-        outerDiv.append(vegan)
+       backDiv.append(vegan)
     }
 
     if (recipe.vegetarian === true){
         const vegetarian = document.createElement('h4')
         vegetarian.innerText = "Vegetarian: True"
-        outerDiv.append(vegetarian)
+        backDiv.append(vegetarian)
     }
-    // const body = document.querySelector('body')
+
+    // cardFlip.append(cardBody)
+
+    const cardContainer = document.querySelector('.container')
+    
+    const column = document.createElement("div")
+    column.setAttribute("class", "col-sm-4")
+    
+    cardContainer.append(container)
+
+    container.append(column)
+    
+    column.append(cardFlip)
+    
 
     
-  const row = document.querySelector('.container')
-    
-    container.append(outerDiv)
-    row.append(container)
-
-
-      // const row1 = document.querySelector('#row1')
-      // const row2 = document.querySelector('#row2')
-      // const row3 = document.querySelector('#row3')
-
-
-  
-    // console.log(row.childElementCount)
-
-    // if (row3.childElementCount < row2.childElementCount)
-    //     row3.append(outerDiv)
-    // // if (row2.childElementCount < row1.childElementCount)
-    //     row2.append(outerDiv)
-    // if (row1.childElementCount < row2.childElementCount)
-    //     row1.append(outerDiv)
-        
+    //const floatingI = document.createElement("i")
+    //floatingI.setAttribute("class", "fa fa-search fa-5x float-right")
   }
