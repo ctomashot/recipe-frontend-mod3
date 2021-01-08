@@ -131,16 +131,16 @@ body {
   text-transform: uppercase;
   text-align: center;
 }
+.card__header h4 {
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
 
 .card__body {
   padding: 30px;
-}
-
-.card__body h3 {
-  color: var(--dark);
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 15px;
 }
 
 .card__body p {
