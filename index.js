@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
     const body = document.querySelector('body')
-    const form = document.querySelector('.firstForm')
+    const form = document.querySelector('form')
 
   function newRecipeForm(){
     
@@ -147,14 +147,6 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     const container = document.querySelector(".container")
-
-    
-    // const column = document.createElement("div")
-    //column.setAttribute("class", "col-sm-4")
-    
-    // container.append(row)
-
-    // container.append(column)
     
     outerDiv.append(cardFlip)
 
@@ -168,6 +160,8 @@ document.addEventListener("DOMContentLoaded", function(){
     outerDiv.append(deleteButton)
 
     const form = document.createElement('form')
+    form.setAttribute('class', 'commentForm')
+
     const input = document.createElement('input')
     input.setAttribute('type', 'text')
     input.setAttribute('placeholder', 'Add a comment...')
