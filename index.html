@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Recipe App</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe App</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script defer type="text/javascript" src="index.js"></script>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="hero">
+      <div class="form-box">
+        <div class="button-box">
+          <div id="btn"></div>
+          <button type="button" class="toggle-btn" onclick="login()">
+            Login
+          </button>
+          <button type="button" class="toggle-btn" onclick="register()">
+            Register
+          </button>
+        </div>
 
-	<div class="hero">
-		<div class="form-box">
-			<div class="button-box">
-				<div id="btn">
-				</div>
-				<button type="button" class="toggle-btn" onclick="login()">
-					Login
-				</button>
-				<button type="button" class="toggle-btn" onclick="register()">
-					Register
-				</button>
-			</div>
+        <div class="social-icons">
+          <img src="images/facebook.png" alt="facebook" />
+          <img src="images/twitter.webp" alt="twitter" />
+          <img src="images/google.png" alt="google plus" />
+        </div>
 
-			<div class="social-icons">
-				<img src="images/facebook.png" alt="facebook">
-				<img src="images/twitter.webp" alt="twitter">
-				<img src="images/google.png" alt="google plus">
-			</div>
+        <form id="login" class="input-group">
+          <input type="text" class="input-field" placeholder="Name" required/>
+          <input type="text" class="input-field" placeholder="Username"/>
+          <button type="submit" class="submit-btn">Login</button>
+        </form>
 
-			<form id="login" class="input-group">
-				<input type="text" class="input-field" placeholder="Name" required>
-				<input type="text" class="input-field" placeholder="Username" required>
-				<button type="submit" class="submit-btn">Login</button>
-			</form>
-
-			<form id="register" class="input-group">
-				<input type="text" class="input-field" placeholder="Name" required>
-				<input type="text" class="input-field" placeholder="Username" required>
-				<button type="submit" class="submit-btn">Register</button>
-			</form>
-
-		</div>
-	</div>
-
-</body>
+        <form id="register" class="input-group">
+          <input type="text" class="input-field" placeholder="Name" required />
+          <input
+            type="text"
+            class="input-field"
+            placeholder="Username"
+            required
+          />
+          <button type="submit" class="submit-btn">Register</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
