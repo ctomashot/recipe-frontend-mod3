@@ -1,3 +1,156 @@
+:root {
+  --primary: #ffce00;
+  --secondary: #fe4880;
+  --dark: #212121;
+  --light: #f3f3f3;
+}
+
+body {
+  background-color: rgb(216, 216, 216);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.cards {
+  margin: 0 auto;
+  max-width: 1000xp;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 150px;
+}
+.card {
+  margin: 100px auto 0;
+  width: 400px;
+  height: 600px;
+  perspective: 1000px;
+  display: block;
+}
+
+.card__inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card__inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+.pp__front {
+  display: block;
+  width: 128px;
+  height: 128px;
+  margin: 0 auto 30px;
+  background-color: #fff;
+  border: 5px solid #fff;
+  object-fit: cover;
+}
+
+.card__face--front {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--primary),
+    var(--secondary)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__face--front h2 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.card__face--back {
+  background-color: var(--light);
+  transform: rotateY(180deg);
+}
+
+.card__content {
+  width: 100%;
+  height: 100%;
+}
+
+.card__header {
+  position: relative;
+  padding: 30px 30px 40px;
+}
+
+.card__header:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom left,
+    var(--primary) 10%,
+    var(--secondary) 115%
+  );
+  z-index: -1;
+  border-radius: 0px 0px 50% 0px;
+}
+
+.pp {
+  display: block;
+  width: 128px;
+  height: 128px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 5px solid #fff;
+  object-fit: cover;
+}
+
+.card__header h2 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.card__body {
+  padding: 30px;
+}
+
+.card__body h3 {
+  color: var(--dark);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.card__body p {
+  color: var(--dark);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* RATING CSS */
+
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 * {
   margin: 0;
@@ -7,17 +160,12 @@
 }
 .container {
   position: relative;
-  width: 400px;
-  background: #111;
-  padding: 20px 30px;
-  border: 1px solid #444;
-  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.container .post {
+.post {
   display: none;
 }
 .container .text {
@@ -25,7 +173,7 @@
   color: #666;
   font-weight: 500;
 }
-.container .edit {
+.edit {
   position: absolute;
   right: 10px;
   top: 5px;
@@ -34,16 +182,15 @@
   font-weight: 500;
   cursor: pointer;
 }
-.container .edit:hover {
+.edit:hover {
   text-decoration: underline;
 }
-.container .star-widget input {
+.star-widget input {
   display: none;
 }
 .star-widget label {
-  font-size: 40px;
+  font-size: 20px;
   color: #444;
-  padding: 10px;
   float: right;
   transition: all 0.2s ease;
 }
@@ -73,25 +220,6 @@ form header {
   text-align: center;
   transition: all 0.2s ease;
 }
-form .textarea {
-  height: 100px;
-  width: 100%;
-  overflow: hidden;
-}
-form .textarea textarea {
-  height: 100%;
-  width: 100%;
-  outline: none;
-  color: #eee;
-  border: 1px solid #333;
-  background: #222;
-  padding: 10px;
-  font-size: 17px;
-  resize: none;
-}
-.textarea textarea:focus {
-  border-color: #444;
-}
 form .btn {
   height: 45px;
   width: 100%;
@@ -100,10 +228,10 @@ form .btn {
 form .btn button {
   height: 100%;
   width: 100%;
-  border: 1px solid #444;
+  border: 1px solid rgba(68, 68, 68, 0);
   outline: none;
-  background: #222;
-  color: #999;
+  background: rgba(34, 34, 34, 0);
+  color: rgb(255, 255, 255);
   font-size: 17px;
   font-weight: 500;
   text-transform: uppercase;
@@ -111,5 +239,167 @@ form .btn button {
   transition: all 0.3s ease;
 }
 form .btn button:hover {
-  background: #1b1b1b;
+  text-decoration: underline;
 }
+
+/* NAVBAR */
+
+header {
+  background-image: url("images/background.jpg");
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba(lightblue, 0.75);
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: rgb(255, 255, 255);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(60px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2 / 2;
+  }
+
+  nav {
+    position: relative;
+    text-align: center;
+    transition: none;
+    transform: scale(1, 1);
+    background: none;
+    top: initial;
+    left: initial;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+
+  nav a::before {
+    content: "";
+    display: block;
+    height: 5px;
+    background: black;
+    position: absolute;
+    top: -0.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav a:hover::before {
+    transform: scale(1, 1);
+  }

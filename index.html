@@ -1,39 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Recipe App</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<script defer type="text/javascript" src="index.js"></script>
-	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe App</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script defer type="text/javascript" src="index.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
+
   <body>
-	  <div class="container">
-		  <div class="post">
-			  <div class="text">
-				  Rating Posted!
-				</div>
-				<div class="edit">
-					EDIT
-				</div>
-			</div>
-			<div class="star-widget">
-				<input type="radio" name="rate" id="rate-5">
-				<label for="rate-5" class="fas fa-star"></label>
-        		<input type="radio" name="rate" id="rate-4">
-        		<label for="rate-4" class="fas fa-star"></label>
-				<input type="radio" name="rate" id="rate-3">
-				<label for="rate-3" class="fas fa-star"></label>
-				<input type="radio" name="rate" id="rate-2">
-				<label for="rate-2" class="fas fa-star"></label>
-				<input type="radio" name="rate" id="rate-1">
-				<label for="rate-1" class="fas fa-star"></label>
-				<form action="#">
-					<div class="btn">
-						<button type="submit">Post</button>
-					</div>
-				</form>
-			</div>
+    <header>
+      <img class="logo" src="images/recipe-logo.png" alt="logo" />
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <nav>
+		  
+        <ul>
+          <li><a href="#">Vegan</a></li>
+          <li><a href="#">Vegetarian</a></li>
+          <li><a href="#">Login</a></li>
+
+		  
+        </ul>
+      </nav>
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+      </label>
+    </header>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card__inner">
+          <div class="card__face card__face--front">
+            <div class="card__header--front">
+              <img src="" alt="" class="pp__front" />
+              <h2>Title</h2>
+            </div>
+          </div>
+
+          <div class="card__face card__face--back">
+            <div class="card__content">
+              <div class="card__header">
+                <img src="images/butter_chicken.jpeg" alt="" class="pp" />
+                <h2>Recipe Title</h2>
+                <div class="container">
+                  <div class="post">
+                    <div class="edit">EDIT</div>
+                  </div>
+                  <div class="star-widget">
+                    <input type="radio" name="rate" id="rate-5" />
+                    <label for="rate-5" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="rate-4" />
+                    <label for="rate-4" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="rate-3" />
+                    <label for="rate-3" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="rate-2" />
+                    <label for="rate-2" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="rate-1" />
+                    <label for="rate-1" class="fas fa-star"></label>
+                    <form action="#">
+                      <div class="btn">
+                        <button type="submit">Post</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="card__body">
+                  <h3>Recipe Title</h3>
+                  <p>recipe content</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
