@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function(){
     frontDiv.setAttribute("class", "card-front text-white bg-dark")
     const backDiv = document.createElement('div')
     backDiv.setAttribute("class", "card-back bg-white")
+    backDiv.setAttribute("id", "body")
 
     const cardFlip = document.createElement("div")
     cardFlip.setAttribute("class", "card card-flip h-25")
@@ -217,10 +218,15 @@ document.addEventListener("DOMContentLoaded", function(){
   function deleteTheComment(event){
     const commentId = event.target.parentElement.dataset.id
     const parent = event.target.parentElement
-    fetch(`${commentUrl}/${commentId}`,{
+    const numberForComment = parseInt(commentId)
+    console.log(numberForComment)
+    parent.remove()
+    fetch(`${commentUrl}/${numberForComment}`,{
         method: 'DELETE'
     })     
-    parent.remove()
+    // parent.remove()
+    .then(response => response.json())
+    .then(response => console.log(res))
   }
 
   function postComment(event){
@@ -242,8 +248,12 @@ document.addEventListener("DOMContentLoaded", function(){
         headers:{'Content-Type': 'application/json'},
         body: JSON.stringify({
             content: userInput,
-            user_id: 20,
+            user_id: 10,
             recipe_id: recipeId
         })
-    })
+      })
+    .then(response => response.json())
+    .then( comments => {
+      showComment(comments, outerDiv, recipeId)}
+      )
 }

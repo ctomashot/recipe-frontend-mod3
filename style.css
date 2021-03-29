@@ -7,14 +7,17 @@ header {
   width: 100%;
   box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
 }
+
 .nav-toggle {
   position: absolute !important;
   top: -9999px !important;
   left: -9999px !important;
 }
+
 .nav-toggle:focus ~ .nav-toggle-label {
   outline: 3px solid rgba(lightblue, 0.75);
 }
+
 .nav-toggle-label {
   position: absolute;
   top: 0;
@@ -23,7 +26,8 @@ header {
   height: 100%;
   display: flex;
   align-items: center;
-}
+} 
+
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
@@ -34,17 +38,21 @@ header {
   border-radius: 2px;
   position: relative;
 }
+
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
   content: "";
   position: absolute;
-}
+} 
+
 .nav-toggle-label span::before {
   bottom: 7px;
 }
+
 .nav-toggle-label span::after {
   top: 7px;
 }
+
 nav {
   position: absolute;
   text-align: left;
@@ -94,7 +102,7 @@ nav a:hover {
     grid-template-columns: 1fr auto minmax(60px, 3fr) 1fr;
   }
   .logo {
-    grid-column: 2 / 2;
+    grid-column: 2 / 4;
   }
   nav {
     position: relative;
@@ -135,14 +143,14 @@ nav a:hover {
     transform: scale(1, 1);
   }
 
-
+}
 
 
 .background {
   background-image: url('images/TableFoodImage4.jpg');
   background-color: transparent;
   /* Full height */
-  height: 350%;
+  height: 700%;
 
   /* Center and scale the image nicely */
   background-position: center;
@@ -166,12 +174,16 @@ flip card
 
 .card-front {
   transform: rotateY(0deg);
+  width: 320px;
+  height: 35%;
 }
 
 .card-back {
   transform: rotateY(180deg);
   position: absolute;
   top: 0;
+  width: 320px;
+  height: 35%;
 }
 
 .card-flip:hover .card-front {
@@ -183,8 +195,12 @@ flip card
 }
 
 .card {
-  height: 900px;
+  height: 450px;
+  width: 355px;
+  background: orange;
 }
+
+
 
 
 .photo {
@@ -194,9 +210,16 @@ flip card
 .card-title {
   margin-right: auto;
   margin-left: auto;
+  width: 10%;
+  font-size: 55%;
 }
 
-.container {
-  
+#body {
+  overflow: scroll; 
 }
+
+.photo {
+  width: 65%;
+}
+
 
