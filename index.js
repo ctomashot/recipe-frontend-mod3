@@ -237,9 +237,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
   function editTheComment(event, recipeId){
     // console.log("I've been clicked!")
-    const thisCommentId = event.target.parentElement.dataset.id
+    // const thisCommentId = event.target.parentElement.dataset.id
     const parent = event.target.parentElement
-    const numberOfComment = parseInt(thisCommentId)
+    // const numberOfComment = parseInt(thisCommentId)
     // console.log(parent.textContent)
     // console.log(parent.id)
     // console.log(event.target.onclick) 
@@ -262,22 +262,33 @@ document.addEventListener("DOMContentLoaded", function(){
     // console.log(parent.children[2])
     // const editForm = document.getElementsByClassName("editForm")
     // console.log(editForm.child)
-    const inputBar = document.getElementById('inputting')
+    // const inputBar = document.getElementById('inputting')
     // console.log(inputBar.onchange)
-    const editedComment = document.getElementById("inputting").value
-    console.log(editedComment)
+    // const editedComment = document.getElementById("inputting").value
+  
+  
  
-   
-    fetch(`${commentUrl}/${numberOfComment}`,{
+  //  function updateComment(event, recipeId){
+    event.preventDefault()
+    // console.log(event.target.children[0].value)
+
+    const stringCommentId = event.target.parentElement.dataset.id
+    const updatedCommentId = parseInt(stringCommentId)
+
+    console.log(event.target.children[0])
+
+    const newComment = event.target.children[0].value
+    fetch(`${commentUrl}/${updatedCommentId}`,{
       method: 'PATCH',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify({
-        content: input,
+        content: newComment,
         user_id: 14,
         recipe_id: recipeId
       })
     })
     // .then(response => response.json())
+    // .then(console.log())
     // .then( comments => {
     //   showComment(comments, outerDiv, recipeId)}
     //   )
