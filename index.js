@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function(){
             content: recipeInstructions,
             image: recipeImage,
             ingredients: recipeIngredients,
-            user_id: 20,
+            user_id: 14,
             vegetarian: recipeVeggie,
             vegan: recipeVegan
         })
@@ -160,6 +160,9 @@ document.addEventListener("DOMContentLoaded", function(){
     deleteButton.addEventListener('click', deleteTheRecipe)
     outerDiv.append(deleteButton)
 
+  
+
+
     const form = document.createElement('form')
     form.setAttribute('class', 'commentForm')
 
@@ -179,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // body.append(outerDiv)
 
     
-  
+    
 
   }
 
@@ -206,12 +209,18 @@ document.addEventListener("DOMContentLoaded", function(){
     if(comment.recipe_id === recipeId){
         commentH5.textContent = `${comment.user.username}: ${comment.content}`
         commentH5.dataset.id = comment.id
+        commentH5.setAttribute('id', 'Comment')
         const deleteComment = document.createElement('button')
         deleteComment.textContent = 'Delete'
         commentH5.append(deleteComment)
         deleteComment.addEventListener('click', deleteTheComment)
-    }
 
+        const editComment = document.createElement('button')
+        editComment.textContent = 'Edit'
+        commentH5.append(editComment) 
+        editComment.addEventListener('click', editTheComment)
+    }
+  
     outerDiv.append(commentH5) 
   }
 
@@ -219,15 +228,69 @@ document.addEventListener("DOMContentLoaded", function(){
     const commentId = event.target.parentElement.dataset.id
     const parent = event.target.parentElement
     const numberForComment = parseInt(commentId)
-    console.log(numberForComment)
     parent.remove()
     fetch(`${commentUrl}/${numberForComment}`,{
         method: 'DELETE'
     })     
-    // parent.remove()
-    .then(response => response.json())
-    .then(response => console.log(res))
+    
   }
+
+  function editTheComment(event, recipeId){
+    // console.log("I've been clicked!")
+    const thisCommentId = event.target.parentElement.dataset.id
+    const parent = event.target.parentElement
+    const numberOfComment = parseInt(thisCommentId)
+    // console.log(parent.textContent)
+    // console.log(parent.id)
+    // console.log(event.target.onclick) 
+   
+
+    const form = document.createElement('form')
+    form.setAttribute('class', 'editForm')
+
+    const input = document.createElement('input')
+    input.setAttribute('type', 'text')
+    input.setAttribute('placeholder', 'Edit a comment...')
+    input.setAttribute('id', 'inputting')
+    const submitButton = document.createElement('button')
+    submitButton.setAttribute("type", "submit")
+    submitButton.innerText = 'Update'
+    form.append(input, submitButton)
+    parent.append(form)
+    form.addEventListener('submit', postComment)
+    // const recipeId = recipe.id  
+    // console.log(parent.children[2])
+    // const editForm = document.getElementsByClassName("editForm")
+    // console.log(editForm.child)
+    const inputBar = document.getElementById('inputting')
+    // console.log(inputBar.onchange)
+    const editedComment = document.getElementById("inputting").value
+    console.log(editedComment)
+ 
+   
+    fetch(`${commentUrl}/${numberOfComment}`,{
+      method: 'PATCH',
+      headers:{'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        content: input,
+        user_id: 14,
+        recipe_id: recipeId
+      })
+    })
+    // .then(response => response.json())
+    // .then( comments => {
+    //   showComment(comments, outerDiv, recipeId)}
+    //   )
+
+  } 
+
+
+
+
+
+
+
+
 
   function postComment(event){
     const outerDiv = event.target.parentElement
@@ -242,6 +305,8 @@ document.addEventListener("DOMContentLoaded", function(){
     deleteComment.addEventListener('click', deleteTheComment)
     outerDiv.append(commentH5)
     event.target[0].value = ''
+
+    console.log(userInput)
 
     fetch(`${commentUrl}`,{
         method: 'POST',
