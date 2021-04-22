@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
   }
 
-  function editTheComment(event, recipeId){
+  function editTheComment(event){
     // console.log("I've been clicked!")
     // const thisCommentId = event.target.parentElement.dataset.id
     const parent = event.target.parentElement
@@ -257,7 +257,24 @@ document.addEventListener("DOMContentLoaded", function(){
     submitButton.innerText = 'Update'
     form.append(input, submitButton)
     parent.append(form)
-    form.addEventListener('submit', postComment)
+    form.addEventListener('submit', changedComment)
+    // postComment
+
+    // console.log(parent)
+    // const outerDiv = event.target.parentElement
+    // recipeId = outerDiv.id  
+    // event.preventDefault()
+    // const userInput = event.target.value
+    // console.log(userInput)
+    // const commentH5 = document.createElement('h5')
+    // commentH5.innerText = userInput
+    // const deleteComment = document.createElement('button')
+    // deleteComment.innerText = 'Delete'
+    // commentH5.append(deleteComment)
+    // deleteComment.addEventListener('click', deleteTheComment)
+    // outerDiv.append(commentH5)
+    // event.target[0].value = ''
+
     // const recipeId = recipe.id  
     // console.log(parent.children[2])
     // const editForm = document.getElementsByClassName("editForm")
@@ -269,28 +286,28 @@ document.addEventListener("DOMContentLoaded", function(){
   
  
   //  function updateComment(event, recipeId){
-    event.preventDefault()
+    // event.preventDefault()
     // console.log(event.target.children[0].value)
 
-    const stringCommentId = event.target.parentElement.dataset.id
-    const updatedCommentId = parseInt(stringCommentId)
+    // const stringCommentId = event.target.parentElement.dataset.id
+    // const updatedCommentId = parseInt(stringCommentId)
 
-    console.log(event.target.children[0])
+    // console.log(event.target.children[0])
 
-    const newComment = event.target.children[0].value
-    fetch(`${commentUrl}/${updatedCommentId}`,{
-      method: 'PATCH',
-      headers:{'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        content: newComment,
-        user_id: 14,
-        recipe_id: recipeId
-      })
-    })
+    // const newComment = event.target.children[0].value
+    // fetch(`${commentUrl}/${updatedCommentId}`,{
+    //   method: 'PUT',
+    //   headers:{'Content-Type': 'application/json'},
+    //   body: JSON.stringify({
+    //     content: newComment,
+    //     user_id: 14,
+    //     recipe_id: recipeId
+    //   })
+    // })
     // .then(response => response.json())
     // .then(console.log())
-    // .then( comments => {
-    //   showComment(comments, outerDiv, recipeId)}
+    // .then( updatedComments => {
+    //   showComment(updatedComments, outerDiv, recipeId)}
     //   )
 
   } 
@@ -298,17 +315,43 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
+  function changedComment(event, recipeId) {
+    event.preventDefault()
+    // console.log(event.target.children[0].value)
+    console.log(event)
 
+    const stringCommentId = event.target.parentElement.dataset.id
+    const updatedCommentId = parseInt(stringCommentId)
+
+    // console.log(event.target.children[0])
+
+
+    const newComment = event.target.children[0].value
+
+    fetch(`${commentUrl}/${updatedCommentId}`,{
+      method: 'PUT',
+      headers:{'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        content: newComment,
+        user_id: 14,
+        recipe_id: recipeId
+      })
+    })
+
+  } 
 
 
 
 
   function postComment(event){
+    console.log(event)
     const outerDiv = event.target.parentElement
+    // console.log(outerDiv)
     recipeId = outerDiv.id  
     event.preventDefault()
     const userInput = event.target[0].value
     const commentH5 = document.createElement('h5')
+    commentH5.textContent = `${comment.user.username}: ${comment.content}`
     commentH5.innerText = userInput
     const deleteComment = document.createElement('button')
     deleteComment.innerText = 'Delete'
@@ -324,7 +367,7 @@ document.addEventListener("DOMContentLoaded", function(){
         headers:{'Content-Type': 'application/json'},
         body: JSON.stringify({
             content: userInput,
-            user_id: 10,
+            user_id: 14,
             recipe_id: recipeId
         })
       })
